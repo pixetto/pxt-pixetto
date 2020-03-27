@@ -12,5 +12,5 @@ MIT
 (The metadata above is needed for package search.)
 
 ```package
-mkcode-test=github:sylviolin/mkcode-test
+pxt-pixetto=github:pixetto/pxt-pixetto
 ```
