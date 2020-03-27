@@ -1,0 +1,17 @@
+{
+    "name": "Pixetto",
+    "version": "0.0.1",
+    "description": "Pixetto blocks for micro:bit",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "main.ts",
+        "pixetto.cpp",
+        "shims.d.ts",
+        "enums.d.ts"
+    ],
+    "public": true
+}
