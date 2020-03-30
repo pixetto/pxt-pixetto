@@ -1,0 +1,11 @@
+{
+  "pixetto.begin|block": "初始化視覺感測器 RX %rx TX %tx",
+  "pixetto.isDetected|block": "識別到物體",
+  "pixetto.getFuncID|block": "目前功能",
+  "pixetto.getTypeID|block": "物體類別",
+  "pixetto.getPosX|block": "物體座標X",
+  "pixetto.getPosY|block": "物體座標Y",
+  "pixetto.getWidth|block": "物體寬度",
+  "pixetto.getHeight|block": "物體高度",
+  "{id:category}pixetto": "Pixetto"
+}

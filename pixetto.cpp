@@ -47,6 +47,19 @@ namespace pixetto {
       return false;
     }
 	
+	bool verifyChecksum(uint8_t *buf, int len)
+	{
+		uint8_t sum = 0;
+		
+		for (uint8_t i=1; i<len-2; i++)
+			sum += buf[i];
+		
+		if (sum == PXT_PACKET_START || sum == PXT_PACKET_END)
+			sum = 0xAA;
+		
+		return (sum == buf[8]);
+	}
+
     //% 
     bool begin(PixSerialPin rx, PixSerialPin tx){
 		PinName txn, rxn;
@@ -55,7 +68,7 @@ namespace pixetto {
 		{
 			serial = new MicroBitSerial(txn, rxn);
 			serial->baud(38400);
-			//serial->setRxBufferSize(500);
+			//serial->setRxBufferSize(64);
 			//serial->setTxBufferSize(32);
 			uBit.sleep(100);
 			
@@ -98,8 +111,10 @@ namespace pixetto {
 		} while (data_buf[0] != PXT_PACKET_START);
 
 		read_len = serial->read(&data_buf[1], 9);
+		
 		if (read_len != 9) return false;
 		if (data_buf[9] != PXT_PACKET_END) return false;
+		if (!verifyChecksum(data_buf, 10)) return false;
 		if (data_buf[2] == 0) return false;
 		return true;
 	}
