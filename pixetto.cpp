@@ -24,6 +24,34 @@ enum PixSerialPin {
     P16 = 16
 };
 
+enum PixFunction {
+        //% block="Color Detection"
+        COLOR_DETECTION=1,
+        //% block="Color Label Detection"
+        COLOR_LABEL=2,
+        //% block="Shape Detection"
+        SHAPE_DETECTION=3,
+        //% block="Circle Detection"
+        CIRCLE_DETECTION=4,
+        //% block="Template Matching"
+        TEMPLATE=6,
+        //% block="Keypoint"
+        KEYPOINT=8,
+        //% block="Neural Network"
+        NEURAL_NETWORK=15,
+        //% block="Face Detection"
+        FACE_DETECTION=11,
+        //% block="Traffic Sign Detection"
+        TRAFFIC_SIGN_DETECTION=12,
+        //% block="Handwriting Digits Detection"
+        HANDWRITING_DIGITS_DETECTION=13,
+        //% block="Handwriting Letters Detection"
+        HANDWRITING_LETTERS_DETECTION=14,
+        //% block="AprilTag(16h5)"
+        APRILTAG=10
+};
+    
+
 using namespace pxt;
 
 //% color=#A88002 weight=111 icon="\uf192"
@@ -119,13 +147,59 @@ namespace pixetto {
 		return true;
 	}
 	//%
-	int getFuncID(){
-		return data_buf[2];
+	bool getFuncID(int func_id){
+		return (data_buf[2] == func_id);
 	}
-	//%
-	int getTypeID() {
-		return data_buf[3];
-	}
+	
+    //% 
+    bool get_colordetect_color(int color) {
+		if (data_buf[2] == COLOR_DETECTION && data_buf[3] == color)
+			return true;
+        return false;
+    }
+    
+    //% 
+    bool get_shapedetect_shape(int shape) {
+		if (data_buf[2] == SHAPE_DETECTION && data_buf[3] == shape)
+			return true;
+        return false;
+    }
+
+    //% 
+    bool get_circledetect_color(int color) {
+		if (data_buf[2] == CIRCLE_DETECTION && data_buf[3] == color)
+			return true;
+        return false;
+    }
+
+    //%
+    bool get_nn_id(int id) {
+		if (data_buf[2] == NEURAL_NETWORK && data_buf[3] == id)
+			return true;
+        return false;
+    }
+
+    //%
+    bool get_traffic_sign(int sign) {
+		if (data_buf[2] == TRAFFIC_SIGN_DETECTION && data_buf[3] == sign)
+			return true;
+        return false;
+    }
+
+    //%
+    bool get_hand_digit(int digit) {
+		if (data_buf[2] == HANDWRITING_DIGITS_DETECTION && data_buf[3] == digit)
+			return true;
+        return false;
+    }
+
+    //%
+    bool get_hand_letter(int letter) {
+		if (data_buf[2] == HANDWRITING_LETTERS_DETECTION && data_buf[3] == letter)
+			return true;
+        return false;
+    }	
+	
 	//%
 	int getPosX() {
 		return data_buf[4];
@@ -142,4 +216,5 @@ namespace pixetto {
 	int getHeight() {
 		return data_buf[7];
 	}
+	
 }
