@@ -54,7 +54,6 @@ enum PixFunction {
 
 using namespace pxt;
 
-//% color=#A88002 weight=111 icon="\uf192"
 namespace pixetto {
 
 	MicroBitSerial *serial = nullptr;

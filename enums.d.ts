@@ -40,7 +40,5 @@
     //% block="AprilTag(16h5)"
     APRILTAG = 10,
     }
-declare namespace pixetto {
-}
 
 // Auto-generated. Do not edit. Really.
