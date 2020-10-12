@@ -225,4 +225,17 @@ namespace pixetto {
     export function getHeight(): number {
         return 0;
     }
+    
+    //% block="equation answer"
+    //% shim=pixetto::getEquationAnswer
+    export function getEquationAnswer() {
+        return 0;
+    }
+
+    //% block="equation expression"
+    //% shim=pixetto::getEquationExpr
+    export function getEquationExpr() {
+        return 0;
+    }
+    
 }
