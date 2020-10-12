@@ -17,7 +17,7 @@
     declare const enum PixFunction {
     //% block="Color Detection"
     COLOR_DETECTION = 1,
-    //% block="Color Label Detection"
+    //% block="Color Codes Detection"
     COLOR_LABEL = 2,
     //% block="Shape Detection"
     SHAPE_DETECTION = 3,
@@ -28,7 +28,9 @@
     //% block="Keypoint"
     KEYPOINT = 8,
     //% block="Neural Network"
-    NEURAL_NETWORK = 15,
+    NEURAL_NETWORK = 9,
+    //% block="AprilTag(16h5)"
+    APRILTAG = 10,
     //% block="Face Detection"
     FACE_DETECTION = 11,
     //% block="Traffic Sign Detection"
@@ -37,8 +39,20 @@
     HANDWRITING_DIGITS_DETECTION = 13,
     //% block="Handwriting Letters Detection"
     HANDWRITING_LETTERS_DETECTION = 14,
-    //% block="AprilTag(16h5)"
-    APRILTAG = 10,
+    /*
+    //% block="Remote Computing"
+    REMOTE_COMPUTING = 15,
+    //% block="Lanes Detection"
+    LANES_DETECTION = 16,
+     */
+    //% block="Digits Operation"
+    DIGITS_OPERATION = 17,
+    /*
+    //% block="Simple Classifier"
+    SIMPLE_CLASSIFIER = 18,
+    //% block="Voice Commands"
+    VOICE_COMMANDS = 19,
+     */
     }
 
 // Auto-generated. Do not edit. Really.
