@@ -218,7 +218,7 @@ namespace pixetto {
         return false;
     }
 
-    //% block="current function is %type_id"
+    //% block="object type"
     //% shim=pixetto::getTypeID
     //% weight=89
     export function getTypeID(): number {
