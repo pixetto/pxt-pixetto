@@ -63,7 +63,16 @@ namespace pixetto {
 		//% block="Green light"
 		SIGN_GREEN_LIGHT
     }
-  
+	
+	export enum PixTemplate {
+		//% block="1"
+		Template_1=1,
+		//% block="2"
+		Template_2,
+		//% block="3"
+		Template_3
+	}
+	
     export enum PixHandDigit {
         //% block="0"
         Digit_0,
@@ -86,7 +95,7 @@ namespace pixetto {
         //% block="9"
         Digit_9
     }
-    
+       
     export enum PixHandLetter {
 		//% block="Aa"
 		A=0,
@@ -204,6 +213,13 @@ namespace pixetto {
 		return false
     }
     
+	//% block="enable function %func"
+	//% shim=pixetto::enableFunc
+	//% weight=99
+	export function enableFunc(func: PixFunction): void {
+		return;
+    }
+    
     //% block="object is detected"
     //% shim=pixetto::isDetected
     //% weight=95
@@ -274,51 +290,65 @@ namespace pixetto {
         return false;
     }
 
+    //% block="Template Matching detects %id"
+    //% shim=pixetto::get_template_id
+    //% weight=77
+    export function get_template_id(id: PixTemplate): boolean {
+        return false;
+    }
+
+    //% block="Keypoint detects %id"
+    //% shim=pixetto::get_keypoint_id
+    //% weight=76
+    export function get_keypoint_id(id: PixTemplate): boolean {
+        return false;
+    }
+
     //% block="Neural Network detects %id"
     //% shim=pixetto::get_nn_id
-    //% weight=77
+    //% weight=75
     export function get_nn_id(id: number): boolean {
         return false;
     }
 
     //% block="Traffic Sign Detection detects %sign"
     //% shim=pixetto::get_traffic_sign
-    //% weight=76
+    //% weight=74
     export function get_traffic_sign(sign: PixTrafficSign): boolean {
         return false;
     }
 
     //% block="Handwritten Digits Detection detects %digit"
     //% shim=pixetto::get_hand_digit
-    //% weight=75
+    //% weight=73
     export function get_hand_digit(digit: PixHandDigit): boolean {
         return false;
     }
 
     //% block="Handwritten Lettes Detection detects %letter"
     //% shim=pixetto::get_hand_letter
-    //% weight=74
+    //% weight=72
     export function get_hand_letter(letter: PixHandLetter): boolean {
         return false;
     }
 
     //% block="Remote Computing detects %id"
     //% shim=pixetto::get_remote_computing
-    //% weight=73
+    //% weight=71
     export function get_remote_computing(id: number): boolean {
         return false;
     }
     
     //% block="Simple Classifier detects %id"
     //% shim=pixetto::get_simple_classifier
-    //% weight=72
+    //% weight=70
     export function get_simple_classifier(id: number): boolean {
         return false;
     }
 
     //% block="Voice Command detects %vcmd"
     //% shim=pixetto::get_voice_command
-    //% weight=71
+    //% weight=69
     export function get_voice_command(vcmd: PixVoiceCommand): boolean {
         return false;
     }

@@ -14,6 +14,7 @@
 #define PXT_CMD_STREAMOFF	0x7A
 #define PXT_CMD_STREAMON_CB 0x7B
 #define PXT_CMD_QUERY		0x7C
+#define PXT_CMD_ENABLEFUNC	0x7D
 #define PXT_CMD_RESET		0x53 //(83)
 
 #define PXT_RET_CAM_SUCCESS	0xE0
@@ -112,6 +113,8 @@ enum PixLanesField {
 //using namespace pxt;
 //using namespace codal;
 
+//extern MicroBit uBit;
+
 namespace pixetto {
 	MicroBitSerial *serial = nullptr;
 	uint8_t data_buf[DATA_SIZE] = {0xFF};
@@ -181,8 +184,10 @@ namespace pixetto {
 		for (uint8_t i=1; i<len-2; i++)
 			sum += buf[i];
 		
-		if (sum == PXT_PACKET_START || sum == PXT_PACKET_END || sum == 0xFF)
-			sum = 0xAA;
+		sum %= 256;
+		
+		//if (sum == PXT_PACKET_START || sum == PXT_PACKET_END || sum == 0xFF)
+		//	sum = 0xAA;
 		
 		return (sum == buf[len-2]);
 	}
@@ -283,6 +288,13 @@ namespace pixetto {
 		return ret;
     }
     
+	//%
+	void enableFunc(int func_id){
+		uint8_t cmd_buf[6] = {PXT_PACKET_START, 0x06, PXT_CMD_ENABLEFUNC, func_id, 0, PXT_PACKET_END};
+		serial->send(cmd_buf, 6, ASYNC);
+		return;
+	}
+	
 	//%
     bool isDetected(){
 		if (bOnStarting) 
@@ -405,6 +417,20 @@ namespace pixetto {
     //% 
     bool get_spheredetect_color(int color) {
 		if (data_buf[2] == SPHERE_DETECTION && data_buf[3] == color)
+			return true;
+        return false;
+    }
+
+    //%
+    bool get_template_id(int id) {
+		if (data_buf[2] == TEMPLATE && data_buf[3] == id)
+			return true;
+        return false;
+    }
+
+    //%
+    bool get_keypoint_id(int id) {
+		if (data_buf[2] == KEYPOINT && data_buf[3] == id)
 			return true;
         return false;
     }
