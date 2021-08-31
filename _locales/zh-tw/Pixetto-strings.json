@@ -16,6 +16,7 @@
   "PixFunction.DIGITS_OPERATION|block": "數字運算",
   "PixFunction.SIMPLE_CLASSIFIER|block": "簡易分類器",
   "PixFunction.VOICE_COMMANDS|block": "語音命令",
+  "PixFunction.LANE_AND_SIGN|block": "車道與號誌偵測",
   "pixetto.PixColorType.BLACK|block": "黑",
   "pixetto.PixColorType.BLUE|block": "藍",
   "pixetto.PixColorType.GREEN|block": "綠",
